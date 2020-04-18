@@ -4,9 +4,9 @@ CC_FLAGS = -std=gnu99 -c -Wall -fmessage-length=0 -pipe -O3 -finline-limit=65000
 
 CC_DBG_FLAGS = -c -Wall -fmessage-length=0 -pipe -g -I. -I$(TOPDIR)/include -D_REENTRANT=1
 
-all: libkheap libmmlibc liba3alloc
+all: libkheap libmmlibc libhoard
 
-debug: libkheap_dbg libmmlibc_dbg liba3alloc_dbg
+debug: libkheap_dbg libmmlibc_dbg libhoard_dbg
 
 alloclibs:
 	mkdir alloclibs
@@ -21,11 +21,11 @@ libkheap_dbg: alloclibs
 
 # Library containing mm_malloc and mm_free for student a3 solution
 
-liba3alloc: alloclibs
-	cd a3alloc; $(CC) $(CC_FLAGS) a3alloc.c; ar rs ../alloclibs/liba3alloc.a a3alloc.o
+libhoard: alloclibs
+	cd hoard; $(CC) $(CC_FLAGS) hoard.c; ar rs ../alloclibs/libhoard.a hoard.o
 
-liba3alloc_dbg: alloclibs
-	cd a3alloc; $(CC) $(CC_DBG_FLAGS) a3alloc.c; ar rs ../alloclibs/liba3alloc_dbg.a a3alloc.o 
+libhoard_dbg: alloclibs
+	cd hoard; $(CC) $(CC_DBG_FLAGS) hoard.c; ar rs ../alloclibs/libhoard_dbg.a hoard.o 
 
 
 # Library containing mm_malloc and mm_free wrappers for libc allocator

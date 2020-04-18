@@ -47,9 +47,9 @@ unless (%config = do "$dir/config.pl") {
 
 # Initialize list of allocator results to graph.
 # uncomment the line corresponding to the allocators you want to graph.
-#my @alloclist = ("a3alloc");
+#my @alloclist = ("hoard");
 #my @alloclist = ("libc", "kheap");
-my @alloclist = ("libc", "kheap", "a3alloc");
+my @alloclist = ("libc", "kheap", "hoard");
 my %names;
 
 # This allows you to give each series a name on the graph
@@ -57,7 +57,7 @@ my %names;
 # to collect the data.  We happen to be using the same names.
 $names{"libc"} = "libc";
 $names{"kheap"} = "kheap";
-$names{"a3alloc"} = "a3alloc";
+$names{"hoard"} = "hoard";
 
 
 my $allocator;

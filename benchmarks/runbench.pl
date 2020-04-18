@@ -32,9 +32,9 @@ if (!-e "$dir/Results") {
 
 # Initialize list of allocators to test.
 # uncomment the line corresponding to the allocators you want to run.
-#my @alloclist = ("a3alloc");
+#my @alloclist = ("hoard");
 #my @alloclist = ("libc", "kheap");
-my @alloclist = ("libc", "kheap", "a3alloc");
+my @alloclist = ("libc", "kheap", "hoard");
 my $allocator;
 
 #Initialize from config file

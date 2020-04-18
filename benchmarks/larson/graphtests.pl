@@ -11,9 +11,9 @@ if (!(-e $dir and -d $dir)) {
 
 my $graphtitle = "Larson throughput";
 
-my @namelist = ("libc", "kheap", "a3alloc");
+my @namelist = ("libc", "kheap", "hoard");
 #my @namelist = ("libc", "kheap");
-#my @namelist = ("a3alloc");
+#my @namelist = ("hoard");
 my %names;
 
 # This allows you to give each series a name on the graph
@@ -21,7 +21,7 @@ my %names;
 # to collect the data.  We happen to be using the same names.
 $names{"libc"} = "libc";
 $names{"kheap"} = "kheap";
-$names{"a3alloc"} = "a3alloc";
+$names{"hoard"} = "hoard";
 
 
 my $name;

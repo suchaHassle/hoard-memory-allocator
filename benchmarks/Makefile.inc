@@ -10,9 +10,9 @@ CC = gcc
 CC_FLAGS = -O3 -DNDEBUG -I$(INCLUDES) -L $(LIBDIR)
 CC_DBG_FLAGS = -g -I$(INCLUDES) -L $(LIBDIR)
 
-all: $(TARGET)-kheap $(TARGET)-libc $(TARGET)-a3alloc
+all: $(TARGET)-kheap $(TARGET)-libc $(TARGET)-hoard
 
-debug: $(TARGET)-kheap-dbg $(TARGET)-libc-dbg $(TARGET)-a3alloc-dbg
+debug: $(TARGET)-kheap-dbg $(TARGET)-libc-dbg $(TARGET)-hoard-dbg
 
 # Allocator based on OS/161 kheap
 
@@ -32,11 +32,11 @@ $(TARGET)-libc-dbg: $(DEPENDS_DBG) $(TOPDIR)/allocators/alloclibs/libmmlibc_dbg.
 
 # Allocator using student a3 solution
 
-$(TARGET)-a3alloc: $(DEPENDS) $(TOPDIR)/allocators/alloclibs/liba3alloc.a
-	$(CC) $(CC_FLAGS) -o $(@) $(TARGET).c $(TOPDIR)/allocators/alloclibs/liba3alloc.a $(LIBS)
+$(TARGET)-hoard: $(DEPENDS) $(TOPDIR)/allocators/alloclibs/libhoard.a
+	$(CC) $(CC_FLAGS) -o $(@) $(TARGET).c $(TOPDIR)/allocators/alloclibs/libhoard.a $(LIBS)
 
-$(TARGET)-a3alloc-dbg: $(DEPENDS_DBG) $(TOPDIR)/allocators/alloclibs/liba3alloc_dbg.a
-	$(CC) $(CC_DBG_FLAGS) -o $(@) $(TARGET).c $(TOPDIR)/allocators/alloclibs/liba3alloc_dbg.a $(LIBS_DBG)
+$(TARGET)-hoard-dbg: $(DEPENDS_DBG) $(TOPDIR)/allocators/alloclibs/libhoard_dbg.a
+	$(CC) $(CC_DBG_FLAGS) -o $(@) $(TARGET).c $(TOPDIR)/allocators/alloclibs/libhoard_dbg.a $(LIBS_DBG)
 
 # Cleanup
 clean:
