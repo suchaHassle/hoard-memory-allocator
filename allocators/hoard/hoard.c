@@ -31,7 +31,7 @@ typedef struct superblock {
   // Place bitmap at end of struct and aligned to a cacheline, so that when
   // the [lock] field is fetched, the prefetcher makes the bitmap be fetched
   // by the time it's needed.
-  u_int8_t __attribute__((aligned(64)) bitmap[64];
+  u_int8_t __attribute__((aligned(64))) bitmap[64];
 } __attribute__((aligned(64))) superblock_t;
 
 typedef struct heap {
